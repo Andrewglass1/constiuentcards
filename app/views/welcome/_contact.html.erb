@@ -1,0 +1,43 @@
+<!-- Contact form -->
+<section id="contact" class="wrapper wrapper-dark wrapper-md">
+  <div class="container  wow fadeIn">
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Learn from us!</h2>
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+        <blockquote>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+            <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+        </blockquote>
+      </div>
+      <div class="col-md-6">
+              <!-- The contact form -->
+              <form action="php/contact.php" method="post" role="form" data-toggle="validator">
+
+                  <div class="form-group">
+                    <label class="control-label">Name</label>
+                    <input type="text" name="name" class="form-control"  required ><br>
+                    <div class="help-block with-errors"></div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="control-label">Email</label>
+                    <input type="email" name="email" class="form-control"  required ><br>
+                    <div class="help-block with-errors"></div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="control-label">Your Message</label>
+                    <textarea rows="5" name="message" cols="30" class="form-control"  required ></textarea><br>
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group">
+                    <input type="submit" name="submit" value="Submit" class="btn btn-primary">
+                  </div>
+              </form>
+            <!-- Contact form end -->
+
+      </div>
+    </div>
+  </div>
+</section>
