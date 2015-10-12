@@ -3,19 +3,19 @@
     <div class="col-md-6 col-md-offset-3 submit-address">
       <div class="card">
         <h4><%= @widget.try(:message) %></h4>
-        <div class="address-data"></div>
+        <div class="col-md-6"></div>
+        <div class="col-md-6 address-data"></div>
       </div>
 
-      <div class="submit-address" id="ccw_submit_div">
-        <form class="form-inline removeable">
+      <div id="ccw_submit_div">
+        <form class="form removeable" id="ccw_address_form">
           <div class="form-group">
-            <label for="exampleInputEmail2">Email</label>
-            <input type="text" class="form-control" id="address" placeholder="Enter your address">
+            <input type="text" class="form-control" id="address" placeholder="Enter your address so we can locate your representative">
           </div>
         </form>
 
         <div class="col-md-6 col-md-offset-3 removeable">
-          <button type="submit" class="btn btn-default" id="ccw_address_submit_button">Send invitation</button>
+          <button type="button" class="btn btn-primary" id="ccw_address_submit_button">Find my Legislators</button>
         </div>
 
         <div class="list-group" id="ccw_legislators_list">
