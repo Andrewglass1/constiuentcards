@@ -4,6 +4,7 @@ $blue: #3333ff;
 .section-title {
   text-align: center; margin: 0 0 40px 0;
   font-weight: bold!important;
+  &.left {text-align: left;}
 }
 
 
@@ -24,4 +25,10 @@ $blue: #3333ff;
     margin: 30px auto 0 auto;
     line-height: 40px;
   }
+}
+
+
+#why-mail{
+  .section-title { margin-bottom: 15px;}
+  .section-subtitle{margin: 0 0 10px 0; font-weight: 100; font-style: italic;}
 }
