@@ -11,18 +11,25 @@ buildCard = function(legislator) {
 
 var fetchRepsByAddress = function() {
   var listGroup = $("#ccw_legislators_list");
-  $.getJSON("legislators.json", function( data ) {
+  var address = $("#ccw_address_input").val();
+  var url = "legislators?address=" + address + ".json"
+  $.getJSON(url, function( data ) {
     if (data.length !== 0) {
       $("#ccw_submit_div .removeable").hide();
     }
 
     $.each(data, function(index, legislator) {
+      var mainOffice = "";
+      var districtOffice;
+      if (legislator.offices[0] !== "undefined") {
+        districtOffice = legislator.offices[0].address;
+      } else {
+        districtOffice = "";
+      }
       // We'll need to replace the attributes with whatever we get back from real API
-      var newLink = "<a href='#leg" + index + "'" + "class='list-group-item' data-name='" + legislator.name + "'" +
-                    " data-address='" + legislator.street_address + "'" +
-                    " data-city='" + legislator.city + "'" +
-                    " data-state='" + legislator.state + "'" +
-                    " data-zipcode='" + legislator.zip + "'" + ">" + legislator.name + "</a>";
+      var newLink = "<a href='#leg" + index + "'" + "class='list-group-item' data-name='" + legislator.full_name + "'" +
+                    " data-address='" + mainOffice + "'" +
+                    " data-district='" + districtOffice + "'" + ">" + legislator.full_name + "</a>";
       listGroup.append(newLink);
     });
 
