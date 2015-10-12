@@ -1,13 +1,27 @@
 <div class="container" id="ccw_widget_container">
   <div class="row">
     <div class="col-md-6 col-md-offset-3 submit-address">
-      <div class="card">
+      <div class="ccw-after-order-success">
+        <p>Thanks for your order!</p>
+      </div>
+      <div class="ccw-card-content clearfix ccw-remove-post-order">
         <h4><%= @widget.try(:message) %></h4>
-        <div class="col-md-6"></div>
-        <div class="col-md-6 address-data"></div>
+        <div class="message-address-wrapper clearfix ccw-after-rep-chosen">
+          <div class="col-md-6 ccw-after-rep-chosen message">
+            <textarea placeholder="Add your message"></textarea>
+          </div>
+          <div class="col-md-6 address-data"></div>
+        </div>
       </div>
 
-      <div id="ccw_submit_div">
+      <form class="form-inline ccw-email-form ccw-after-rep-chosen ccw-remove-post-order">
+        <div class="form-group">
+          <input type="email" class="form-control input-sm" id="user-email" placeholder="Enter your email so...">
+        </div>
+        <button type="submit" class="btn btn-primary btn-sm" id="ccw_postcard_submit">Order</button>
+      </form>
+
+      <div class="clearfix" id="ccw_submit_div">
         <form class="form removeable" id="ccw_address_form">
           <div class="form-group">
             <input type="text" class="form-control" id="ccw_address_input" placeholder="Enter your address so we can locate your representative">
@@ -21,6 +35,8 @@
         <div class="list-group" id="ccw_legislators_list">
         </div>
       </div>
+
+      <div id="ccw_logo"><p>add logo here</p></div>
     </div>
   </div>
 </div>

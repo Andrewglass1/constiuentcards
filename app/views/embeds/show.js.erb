@@ -1,12 +1,17 @@
-var buildCard;
-buildCard = function(legislator) {
-  var addressDiv = $("#ccw_widget_container .card .address-data");
+var buildCard = function(legislator) {
+  var addressDiv = $("#ccw_widget_container .ccw-card-content .address-data");
+  var messageEmail = $(".ccw-after-rep-chosen").toggle();
   // First, empty the info in the address div if any before filling it out
   addressDiv.empty();
   $.each(legislator, function(key, value) {
     var dataString = "<p class='" + key + "'>" + value + "</p>";
     addressDiv.append(dataString);
   });
+}
+
+var submitPostcard = function() {
+  $(".ccw-remove-post-order, .ccw-after-order-success").toggle();
+  return false;
 }
 
 var fetchRepsByAddress = function() {
@@ -45,3 +50,4 @@ document.write("<%= escape_javascript(render(:partial => "embeds/widget_css", :l
 document.write("<%= escape_javascript(render(:partial => "templates/widget", :locals => {:widget => @widget})).html_safe %>");
 var addressSubmitButton = document.getElementById("ccw_address_submit_button");
 addressSubmitButton.addEventListener("click", function() { fetchRepsByAddress() }, false);
+$("#ccw_postcard_submit").click(function(){ submitPostcard(); });
