@@ -1,0 +1,28 @@
+<div class="container" id="ccw_widget_container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 submit-address">
+      <div class="card">
+        <h4><%= @widget.try(:message) %></h4>
+        <div class="col-md-6"></div>
+        <div class="col-md-6 address-data"></div>
+      </div>
+
+      <div id="ccw_submit_div">
+        <form class="form removeable" id="ccw_address_form">
+          <div class="form-group">
+            <input type="text" class="form-control" id="ccw_address_input" placeholder="Enter your address so we can locate your representative">
+          </div>
+        </form>
+
+        <div class="col-md-6 col-md-offset-3 removeable">
+          <button type="button" class="btn btn-primary" id="ccw_address_submit_button">Find my Legislators</button>
+        </div>
+
+        <div class="list-group" id="ccw_legislators_list">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>

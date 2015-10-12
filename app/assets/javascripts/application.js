@@ -19,17 +19,17 @@ $(document).ready(function(){
 
   skrollr.init();
   new WOW().init();
-  $('.owl-carousel').owlCarousel({
-      animateOut: 'fadeOut',
-      autoHeight:true,
-      items:1,
-      loop: true,
-      autoplay: true,
-      autoplaySpeed: 1500,
-      margin:0,
-      stagePadding:0,
-      nav: false,
-      smartSpeed:0
+  // $('.owl-carousel').owlCarousel({
+  //     animateOut: 'fadeOut',
+  //     autoHeight:true,
+  //     items:1,
+  //     loop: true,
+  //     autoplay: true,
+  //     autoplaySpeed: 1500,
+  //     margin:0,
+  //     stagePadding:0,
+  //     nav: false,
+  //     smartSpeed:0
 
-  });
+  // });
 })
