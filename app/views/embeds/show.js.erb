@@ -1,0 +1,40 @@
+var buildCard;
+buildCard = function(legislator) {
+  var addressDiv = $("#ccw_widget_container .card .address-data");
+  // First, empty the info in the address div if any before filling it out
+  addressDiv.empty();
+  $.each(legislator, function(key, value) {
+    var dataString = "<p class='" + key + "'>" + value + "</p>";
+    addressDiv.append(dataString);
+  });
+}
+
+var fetchRepsByAddress = function() {
+  var listGroup = $("#ccw_legislators_list");
+  $.getJSON("legislators.json", function( data ) {
+    if (data.length !== 0) {
+      $("#ccw_submit_div .removeable").hide();
+    }
+
+    $.each(data, function(index, legislator) {
+      // We'll need to replace the attributes with whatever we get back from real API
+      var newLink = "<a href='#leg" + index + "'" + "class='list-group-item' data-name='" + legislator.name + "'" +
+                    " data-address='" + legislator.street_address + "'" +
+                    " data-city='" + legislator.city + "'" +
+                    " data-state='" + legislator.state + "'" +
+                    " data-zipcode='" + legislator.zip + "'" + ">" + legislator.name + "</a>";
+      listGroup.append(newLink);
+    });
+
+    $(".list-group-item").click(function(e) {
+      // Once a legislator is chosen, let's hide the list of legislators before filling in the card
+      $("#ccw_legislators_list").hide();
+      buildCard(e.target.dataset);
+    });
+  });
+}
+
+document.write("<%= escape_javascript(render(:partial => "embeds/widget_css", :locals => {:widget => @widget})).html_safe %>");
+document.write("<%= escape_javascript(render(:partial => "templates/widget", :locals => {:widget => @widget})).html_safe %>");
+var addressSubmitButton = document.getElementById("ccw_address_submit_button");
+addressSubmitButton.addEventListener("click", function() { fetchRepsByAddress() }, false);
