@@ -12,32 +12,34 @@
         </blockquote> -->
       </div>
       <div class="col-md-6">
-              <!-- The contact form -->
-              <form action="php/contact.php" method="post" role="form" data-toggle="validator">
+        <%= form_for Inbound.new, html:{id: "new-inbound-form"},
+            method: :post do |f| %>
+          <div id="inbound-form-msg-container">
+            <p id='inbound-form-errors'>Please provide a name and valid email</p>
+            <p id='inbound-form-confirm'>Thanks!  We'll reach out to you shortly</p>
+          </div>
 
-                  <div class="form-group">
-                    <label class="control-label">Name</label>
-                    <input type="text" name="name" class="form-control"  required ><br>
-                    <div class="help-block with-errors"></div>
-                  </div>
+          <div class="form-group">
+            <label class="control-label">Email</label>
+            <%= f.text_field :email, id: "email", class: "form-control",
+                placeholder: "Enter Your Email", type: "email" %>
+          </div>
+          <div class="form-group">
+            <label class="control-label">Name</label>
+            <%= f.text_field :name, id: "name", class: "form-control",
+                placeholder: "Enter Your Name" %>
+          </div>
 
-                  <div class="form-group">
-                    <label class="control-label">Email</label>
-                    <input type="email" name="email" class="form-control"  required ><br>
-                    <div class="help-block with-errors"></div>
-                  </div>
+          <div class="form-group">
+            <label class="control-label">Message (optional)</label>
+            <%= f.text_area :message, id: "message", class: "form-control",
+                placeholder: "Enter A Message", cols: 30 %>
+          </div>
 
-                  <div class="form-group">
-                    <label class="control-label">Message (optional)</label>
-                    <textarea rows="5" name="message" cols="30" class="form-control" ></textarea><br>
-                    <div class="help-block with-errors"></div>
-                  </div>
-                  <div class="form-group">
-                    <input type="submit" name="submit" value="Submit" class="btn btn-primary">
-                  </div>
-              </form>
-            <!-- Contact form end -->
-
+          <div class="form-group">
+            <%= f.submit "submit", class: "btn btn-primary" %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

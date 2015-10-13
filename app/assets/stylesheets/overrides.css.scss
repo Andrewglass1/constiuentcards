@@ -33,3 +33,7 @@ $blue: #3333ff;
   .section-title { margin-bottom: 15px;}
   .section-subtitle{margin: 0 0 10px 0; font-weight: 100; font-style: italic;}
 }
+
+#inbound-form-msg-container {height: 30px;}
+#inbound-form-errors {color: red; display: none;}
+#inbound-form-confirm {display: none;}

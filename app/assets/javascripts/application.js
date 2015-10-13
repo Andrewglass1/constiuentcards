@@ -32,4 +32,23 @@ $(document).ready(function(){
   //     smartSpeed:0
 
   // });
+
+  $( "#new-inbound-form" ).submit(function( event ) {
+    $.ajax({
+      type: "POST",
+      url: $('#new-inbound-form').attr('action'),
+      data: $('#new-inbound-form').serialize(),
+      success: function(data){
+        $('#new-inbound-form #email').val("")
+        $('#new-inbound-form #name').val("")
+        $('#new-inbound-form #message').val("")
+        $('#inbound-form-errors').hide()
+        $('#inbound-form-confirm').show()
+      },
+      error: function(data){
+        $('#inbound-form-errors').show()
+      }
+    });
+    return false
+  })
 })

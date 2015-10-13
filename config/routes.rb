@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   resources :welcome, only: [:index]
   resources :embeds, only: [:show]
   resources :legislators, only: [:index]
+  resources :inbounds, only: [:create]
   root 'welcome#index'
 end
