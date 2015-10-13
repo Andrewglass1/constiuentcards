@@ -1,6 +1,17 @@
 $red: #cc0000;
 $blue: #3333ff;
 
+
+.navbar-brand{
+  padding: 30px; margin: 0;
+  #navbar-logo {height: 35px;}
+}
+
+#hero {
+  #hero-logo {
+    width: 60%; max-width: 650px; margin-bottom: 40px;
+  }
+}
 .section-title {
   text-align: center; margin: 0 0 40px 0;
   font-weight: bold!important;
