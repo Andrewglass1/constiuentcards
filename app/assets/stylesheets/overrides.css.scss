@@ -8,6 +8,8 @@ $blue: #3333ff;
 }
 
 #hero {
+  background-image: asset-url("image3.jpg");
+  background-size:cover;
   #hero-logo {
     width: 60%; max-width: 650px; margin-bottom: 40px;
   }
