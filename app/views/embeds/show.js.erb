@@ -34,7 +34,8 @@ var fetchRepsByAddress = function() {
       // We'll need to replace the attributes with whatever we get back from real API
       var newLink = "<a href='#leg" + index + "'" + "class='list-group-item' data-name='" + legislator.full_name + "'" +
                     " data-address='" + mainOffice + "'" +
-                    " data-district='" + districtOffice + "'" + ">" + legislator.full_name + "</a>";
+                    " data-district='" + legislator.district + "'" +
+                    " data-district-office='" + districtOffice + "'" + ">" + legislator.full_name + " - " + legislator.district + "</a>";
       listGroup.append(newLink);
     });
 
