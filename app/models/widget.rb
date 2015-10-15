@@ -2,7 +2,7 @@ class Widget < ActiveRecord::Base
   include Rails.application.routes.url_helpers
 
   def embed_link
-    embed_url(self, format: :js, host: "mypostcause.com")
+    embed_url(self, format: :js, host: "#{APP_HOST}")
   end
 
   def embed_code
