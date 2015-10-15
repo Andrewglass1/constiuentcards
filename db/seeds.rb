@@ -1,3 +1,3 @@
 Widget.destroy_all
 
-Widget.create(message: "This is the Widget's message")
+Widget.create(message: "Write your representatives in support of YOUR ORGANIZATION.")

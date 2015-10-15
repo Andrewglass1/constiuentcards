@@ -2,6 +2,20 @@
   #ccw_address_form {
     margin-bottom: 30px;
   }
+
+  #ccw_address_input{
+    width: 100%;
+    height: 53px;
+    padding: 14px 21px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 3px !important;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  }
   #ccw_widget_container .ccw-card-content {
     margin-bottom: 20px;
   }
@@ -38,10 +52,14 @@
     height: 90px;
     resize: none;
     width: 100%;
-  }
-  #ccw_widget_container #ccw_logo p {
-    margin: 11.5px 0 0;
     text-align: center;
+    padding-top: 10px;
+  }
+  #ccw_widget_container {
+    width: 100%;
+  }
+  #ccw_widget_container #ccw_logo img {
+    width: 50%; margin: 35px auto 0 auto; display: block;
   }
   .ccw-after-rep-chosen, .ccw-after-order-success {
     display: none;
@@ -51,5 +69,20 @@
   }
   .ccw-email-form .form-group input {
     width: 100%;
+  }
+
+  #ccw_legislator_prompt {display: none;}
+
+  #fill-form-error{ display: none;}
+  #fill-form-error p {color:red;}
+
+  #user-email {text-align: center;}
+
+
+  /*//this is a hack*/
+  .submit-address {
+    width: 60%;
+    margin: 0 20%;
+    display: block;
   }
 </style>

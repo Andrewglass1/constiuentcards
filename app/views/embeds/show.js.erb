@@ -1,22 +1,26 @@
-var buildCard = function(legislator) {
+var buildCard = function(legislatorData) {
   var addressDiv = $("#ccw_widget_container .ccw-card-content .address-data");
   var messageEmail = $(".ccw-after-rep-chosen").toggle();
   // First, empty the info in the address div if any before filling it out
   addressDiv.empty();
-  $.each(legislator, function(key, value) {
+  $.each(legislatorData, function(key, value) {
     var dataString = "<p class='" + key + "'>" + value + "</p>";
     addressDiv.append(dataString);
   });
 }
 
 var submitPostcard = function() {
-  $(".ccw-remove-post-order, .ccw-after-order-success").toggle();
+  if($('#user-email').val() != "" && $('#user-message').val() != ""){
+    $(".ccw-remove-post-order, .ccw-after-order-success").toggle();
+  }
+  else{
+    $('#fill-form-error').show()
+  }
   return false;
 }
 
-var fetchRepsByAddress = function() {
+var fetchRepsByAddress = function(address) {
   var listGroup = $("#ccw_legislators_list");
-  var address = $("#ccw_address_input").val();
   var url = "legislators?address=" + address + ".json"
   $.getJSON(url, function( data ) {
     if (data.length !== 0) {
@@ -24,24 +28,25 @@ var fetchRepsByAddress = function() {
     }
 
     $.each(data, function(index, legislator) {
-      var mainOffice = "";
-      var districtOffice;
-      if (legislator.offices[0] !== "undefined") {
-        districtOffice = legislator.offices[0].address;
-      } else {
-        districtOffice = "";
+      var office = "";
+      if (legislator.offices[0] != "undefined" && legislator.offices[0].address != "undefined") {
+        office = legislator.offices[0].address;
+      } else if (legislator.districtOffice != "undefined"){
+        office = legislator.districtOffice;
       }
       // We'll need to replace the attributes with whatever we get back from real API
       var newLink = "<a href='#leg" + index + "'" + "class='list-group-item' data-name='" + legislator.full_name + "'" +
-                    " data-address='" + mainOffice + "'" +
-                    " data-district='" + legislator.district + "'" +
-                    " data-district-office='" + districtOffice + "'" + ">" + legislator.full_name + " - " + legislator.district + "</a>";
+                    " data-address='" + office + "'" + ">" +
+                    // "<img src='" + legislator.photo_url + "'>" +
+                    legislator.full_name + " (" + legislator.party.charAt(0) + ")<br>" + "District " +legislator.district + "</a>";
       listGroup.append(newLink);
     });
 
+    $("#ccw_legislator_prompt").show()
     $(".list-group-item").click(function(e) {
       // Once a legislator is chosen, let's hide the list of legislators before filling in the card
       $("#ccw_legislators_list").hide();
+      $('#ccw_legislator_prompt').hide()
       buildCard(e.target.dataset);
     });
   });
@@ -49,6 +54,28 @@ var fetchRepsByAddress = function() {
 
 document.write("<%= escape_javascript(render(:partial => "embeds/widget_css", :locals => {:widget => @widget})).html_safe %>");
 document.write("<%= escape_javascript(render(:partial => "templates/widget", :locals => {:widget => @widget})).html_safe %>");
-var addressSubmitButton = document.getElementById("ccw_address_submit_button");
-addressSubmitButton.addEventListener("click", function() { fetchRepsByAddress() }, false);
+// var addressSubmitButton = document.getElementById("ccw_address_submit_button");
+// addressSubmitButton.addEventListener("click", function() { fetchRepsByAddress() }, false);
 $("#ccw_postcard_submit").click(function(){ submitPostcard(); });
+
+
+
+$(document).ready(function(){
+  var input = document.getElementById('ccw_address_input');
+  var autoCompleteoptions = { types: ['geocode']};
+
+  var autocomplete = new google.maps.places.Autocomplete(input, autoCompleteoptions);
+
+  google.maps.event.addListener(autocomplete, 'place_changed', function() {
+    input.className = '';
+    var place = autocomplete.getPlace();
+    if (!place.geometry) {
+      // Inform the user that the place was not found and return.
+      input.className = 'notfound';
+      return;
+    }
+    else{
+      fetchRepsByAddress(place.formatted_address)
+    }
+  })
+})
