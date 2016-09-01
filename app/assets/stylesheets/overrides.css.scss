@@ -50,8 +50,13 @@ $blue: #3333ff;
 #why-mail{
   .section-title { margin-bottom: 15px;}
   .section-subtitle{margin: 0 0 10px 0; font-weight: 100; font-style: italic;}
+  p {font-size: 18px;}
 }
 
+#contact{
+  p {font-size: 18px; margin-top: 15px;}
+
+}
 #inbound-form-msg-container {height: 30px;}
 #inbound-form-errors {color: red; display: none;}
 #inbound-form-confirm {display: none;}
